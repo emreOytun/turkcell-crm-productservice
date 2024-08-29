@@ -1,9 +1,10 @@
 package com.turkcell.pair3.productservice;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SpringBootTest(classes = ProductserviceApplication.class)
+@ExtendWith(MockitoExtension.class)
 class ProductserviceApplicationTests {
 
     @Test
