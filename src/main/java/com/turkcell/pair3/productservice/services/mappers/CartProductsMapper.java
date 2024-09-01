@@ -1,5 +1,6 @@
 package com.turkcell.pair3.productservice.services.mappers;
 
+import com.turkcell.pair3.core.events.CartProductEvent;
 import com.turkcell.pair3.productservice.entities.CartProducts;
 import com.turkcell.pair3.productservice.services.dto.requests.AddProductToCartRequest;
 import org.mapstruct.Mapper;
@@ -10,4 +11,5 @@ public interface CartProductsMapper {
     CartProductsMapper INSTANCE = Mappers.getMapper(CartProductsMapper.class);
 
     CartProducts cartProductFromRequest(AddProductToCartRequest addProductToCartRequest);
+    CartProductEvent cartProductEvent(CartProducts cartProducts);
 }

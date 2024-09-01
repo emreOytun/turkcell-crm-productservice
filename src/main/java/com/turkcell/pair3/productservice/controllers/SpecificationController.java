@@ -1,6 +1,5 @@
 package com.turkcell.pair3.productservice.controllers;
 
-import com.turkcell.pair3.productservice.entities.Specification;
 import com.turkcell.pair3.productservice.services.abstracts.SpecificationService;
 import com.turkcell.pair3.productservice.services.dto.requests.AddProductSpecificationRequest;
 import com.turkcell.pair3.productservice.services.dto.requests.AddSpecificationRequest;
@@ -8,9 +7,11 @@ import com.turkcell.pair3.productservice.services.dto.requests.AssignProductSpec
 import com.turkcell.pair3.productservice.services.dto.responses.AddProductSpecificationResponse;
 import com.turkcell.pair3.productservice.services.dto.responses.AddSpecificationResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Validated
