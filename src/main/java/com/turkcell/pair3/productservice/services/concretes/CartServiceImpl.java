@@ -37,12 +37,12 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<Integer> getCartProducts(Integer cartId) {
-        return cartProductRepository.findProductIdsByCartId(cartId).get();
+        return cartProductRepository.findProductIdsByCartId(cartId).orElse(null);
     }
 
     @Override
     public List<CartProductEvent> getProductsByCartId(Integer cartId) {
-        List<CartProducts> cartProductList = cartProductRepository.findAllByCartId(cartId).get();
+        List<CartProducts> cartProductList = cartProductRepository.findAllByCartId(cartId).orElse(null);
         if (CollectionUtils.isEmpty(cartProductList)) return new ArrayList<>();
         return cartProductList.stream().map(CartProductsMapper.INSTANCE::cartProductEvent).toList();
     }
