@@ -1,5 +1,6 @@
 package com.turkcell.pair3.productservice.services.abstracts;
 
+import com.turkcell.pair3.productservice.entities.Category;
 import com.turkcell.pair3.productservice.services.dto.requests.AddCategoryRequest;
 import com.turkcell.pair3.productservice.services.dto.requests.UpdateCategoryRequest;
 import com.turkcell.pair3.productservice.services.dto.responses.AddCategoryResponse;
@@ -9,4 +10,5 @@ public interface CategoryService {
 
     void update(UpdateCategoryRequest request);
 
+    Category searchCategoryByIdOrThrowExceptionIfNotFound(Integer categoryId);
 }

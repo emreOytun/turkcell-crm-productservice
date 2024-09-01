@@ -1,5 +1,8 @@
 package com.turkcell.pair3.productservice.services.concretes;
 
+import com.turkcell.pair3.core.exception.types.BusinessExceptionFactory;
+import com.turkcell.pair3.core.messages.Messages;
+import com.turkcell.pair3.core.services.abstracts.MessageService;
 import com.turkcell.pair3.productservice.entities.Category;
 import com.turkcell.pair3.productservice.repositories.CategoryRepository;
 import com.turkcell.pair3.productservice.services.abstracts.CategoryService;
@@ -18,9 +21,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
+    private final MessageService messageService;
 
     @Override
-    public AddCategoryResponse add(AddCategoryRequest request){
+    public AddCategoryResponse add(AddCategoryRequest request) {
         Category category = CategoryMapper.INSTANCE.addCategoryRequest(request);
         categoryRepository.save(category);
         return CategoryMapper.INSTANCE.addCategoryResponse(category);
@@ -31,5 +35,12 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = CategoryMapper.INSTANCE.updateCategoryFromRequest(request);
         categoryRepository.save(category);
     }
+
+    @Override
+    public Category searchCategoryByIdOrThrowExceptionIfNotFound(Integer categoryId) {
+        return categoryRepository.findById(categoryId).orElseThrow(
+                () -> BusinessExceptionFactory.createWithMessage(messageService.getMessage(Messages.BusinessErrors.PRODUCT_HAS_NO_CATEGORY)));
+    }
+
 
 }
